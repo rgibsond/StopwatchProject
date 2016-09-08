@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     TextView count;
     Button start, reset;
     Timer t;
+    CounterTask counterTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,12 @@ public class MainActivity extends AppCompatActivity {
         this.start = (Button) findViewById(R.id.start);
 
         this.t = new Timer();
+        this.counterTask = new CounterTask(0);
 
         this.start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                t.scheduleAtFixedRate( , 0, 1000);
+                t.scheduleAtFixedRate(counterTask, 0, 1000);
             }
         });
     }
